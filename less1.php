@@ -53,6 +53,14 @@
             $object = null;
             ?>
         </li>
+        <li>
+            standard output: echo, print, print_r, var_dump <br />
+            <?php echo "echo"; ?> <br />
+            <?php print "print"; ?> <br />
+            <?php print_r("print_r"); ?> <br />
+            <?php echo "hari jum'at"; ?> <br />
+            <?php var_dump("hello"); ?> <br />
+        </li>
     </ol>
 </body>
 

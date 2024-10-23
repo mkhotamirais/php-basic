@@ -18,6 +18,8 @@
     <nav>
         <a href="less1.php">less1</a>
         <a href="less2.php">less2</a>
+        <a href="less3.php">less3</a>
+        <a href="less4.php">less4</a>
     </nav>
 </body>
 
