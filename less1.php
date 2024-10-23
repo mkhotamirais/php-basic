@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PHP Less1</title>
 </head>
 
 <body>
-    <h1>less1</h1>
+    <h1>Less1</h1>
     <ol>
         <li>
             Opening, closing tag and echo and don't forget (;) <br>
-            &lt;?php echo 'hello, world!'; ?&gt; <br>
+            &lt;?php echo 'hello, world!'; ?&gt; or <br>
+            &lt;?= 'hello, world!'; ?&gt; <br />
             <?php echo "hello world"; ?>
         </li>
         <li>All syntax between the PHP opening and closing tags is PHP code, so PHP can be mixed with HTML anywhere and can be inserted even if it's just a single variable.</li>
