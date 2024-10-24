@@ -10,7 +10,7 @@
 <body>
     <h1>Less4</h1>
     <ol>
-        <li>String operator <br />
+        <li>String operator, concat . + <br />
             <?php
             $a = "hello";
             $b = "world";
@@ -19,12 +19,34 @@
             echo $ab;
             ?> <br />
         </li>
-        <li>Aritmethic operator <br />
+        <li>Arithmetic operator + - * ** / % <br />
             8 + 2 = <?= 8 + 2; ?> <br />
-            <?= 4 ** 2; ?>
             2 + 3 * 4 = <?= 2 + 3 * 4; ?> <br />
             (2 + 3) * 4 = <?= (2 + 3) * 4; ?> <br />
         </li>
+        <li>Assignment operator += -= *= /= %= .=, ++, -- <br />
+            <?php
+            $c = 3;
+            echo $c;
+            echo "<br />";
+            $c += 2;
+            echo $c;
+            echo $c++;
+            echo $c;
+            echo ++$c;
+            echo $c;
+            ?>
+        </li>
+        <li>Comparison operator <>, <=>, =, ==, Identity operator !== === <br />
+                    <?php
+                    $d = 5;
+                    $e = 6;
+                    if ($d < $e) {
+                        echo "d lebih kecil dari e";
+                    }
+                    ?>
+        </li>
+        <li>Logic operator: and, &&, or, ||, !</li>
     </ol>
 
 </body>
