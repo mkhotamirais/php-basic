@@ -23,6 +23,8 @@
         <a href="less4.php">less4</a>
         <a href="less5.php">less5</a>
         <a href="less5calculator.php">less5calculator</a>
+        <a href="less6.php">less6</a>
+        <a href="less7.php">less7</a>
     </nav>
 </body>
 
