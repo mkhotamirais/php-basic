@@ -27,6 +27,7 @@
         <a href="less7.php">less7</a>
         <a href="less8.php">less8</a>
         <a href="less9.php">less9</a>
+        <a href="less10.php">less10</a>
     </nav>
 </body>
 
