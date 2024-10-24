@@ -9,6 +9,7 @@
         nav {
             display: flex;
             flex-direction: column;
+            align-items: start;
         }
     </style>
 </head>
@@ -20,6 +21,8 @@
         <a href="less2.php">less2</a>
         <a href="less3.php">less3</a>
         <a href="less4.php">less4</a>
+        <a href="less5.php">less5</a>
+        <a href="less5calculator.php">less5calculator</a>
     </nav>
 </body>
 
