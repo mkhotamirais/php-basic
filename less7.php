@@ -38,7 +38,6 @@
     <?= $date; ?><br />
     <?= strtotime($date); ?>
 
-
 </body>
 
 </html>
