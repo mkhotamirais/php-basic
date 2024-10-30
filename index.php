@@ -28,6 +28,9 @@
         <a href="less8.php">less8</a>
         <a href="less9.php">less9</a>
         <a href="less10.php">less10</a>
+        <a href="less11.php">less11</a>
+        <a href="less12/less12-index.php">less12 index</a>
+        <a href="less13/less13-index.php">less13 index</a>
     </nav>
 </body>
 

@@ -9,6 +9,8 @@
 
 <body>
     <h1>Less7</h1>
+    <p>Mostly used Built-in function: <b>string</b> strlen(), strcmp(), explode(), htmlspecialchars(); <b>utility</b> var_dump(), isset(), empty(), die(), sleep()</p>
+
     <h3>Built in string function</h3>
     <?php $hi = "Hello world!"; ?>
     <?= $hi; ?><br />
@@ -32,11 +34,23 @@
     <?= count($arr); ?>
 
     <h3>Built in date and time function</h3>
+    <?php
+    // EPOCH time (asal mula waktu di dunia IT) = 1 Jan 1970 00:00:00
+    // mktime(jam, menit, detik, bulan, tanggal, tahun)
+    echo mktime(0, 0, 0, 0, 0, 0);
+    echo "<br />";
+    ?>
     <?= date("l, d-m-y: h:i:sa"); ?><br />
     <?= time(); ?><br />
     <?php $date = "2024-01-01 12:00:00"; ?><br />
     <?= $date; ?><br />
-    <?= strtotime($date); ?>
+    <?= strtotime($date); ?><br />
+    <?php
+    $birthday = mktime(0, 0, 0, 5, 22, 1998);
+    $birthday2 = strtotime("22 May 1998");
+    echo date('l', $birthday) . "<br/>";
+
+    ?>
 
 </body>
 

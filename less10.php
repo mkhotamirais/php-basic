@@ -48,6 +48,44 @@
         echo "$fruitName color is $fruitColor<br />";
     }
     ?>
+
+    <h3>others</h3>
+    <li><span>tabel1</span>
+        <table border="1" cellpadding="10" cellspacing="0">
+            <?php
+            for ($m = 1; $m < 5; $m++) {
+                echo "<tr>";
+                for ($n = 1; $n < 5; $n++) {
+                    echo "<td>$m$n</td>";
+                }
+                echo "</tr>";
+            }
+            ?>
+        </table>
+    </li>
+    <li><span>tabel2</span>
+        <table border="1" cellpadding="10" cellspacing="0">
+            <?php for ($o = 1; $o < 5; $o++) { ?>
+                <tr>
+                    <?php for ($p = 1; $p < 5; $p++) { ?>
+                        <td><?= $o, $p; ?></td>
+                    <?php } ?>
+                </tr>
+            <?php } ?>
+        </table>
+    </li>
+    <li><span>table3</span>
+        <table border="1" cellpadding="10" cellspacing="0">
+            <?php for ($q = 1; $q < 5; $q++) : ?>
+                <tr>
+                    <?php for ($r = 1; $r < 5; $r++) { ?>
+                        <td><?= $q, $r; ?></td>
+                    <?php } ?>
+                </tr>
+            <?php endfor; ?>
+        </table>
+    </li>
+
 </body>
 
 </html>

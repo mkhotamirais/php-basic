@@ -51,7 +51,7 @@
     echo "<br />";
     ?>
 
-    <h3>Array type 2</h3>
+    <h3>Array type 2 (associative array)</h3>
     <?php
     $names = [
         "satu" => "ahmad",
