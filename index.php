@@ -31,6 +31,8 @@
         <a href="less11.php">less11</a>
         <a href="less12/less12-index.php">less12 index</a>
         <a href="less13/less13-index.php">less13 index</a>
+        <a href="wpu-php-dasar/index.php">wpu php dasar</a>
+        <a href="wpu-php-dasar/index2.php">wpu php dasar refactoring</a>
     </nav>
 </body>
 
