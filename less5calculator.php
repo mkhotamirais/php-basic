@@ -9,7 +9,7 @@
 
 <body>
     <h1>Less5calculator</h1>
-    <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST">
+    <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
         <input type="number" placeholder="input first number" name="num1" placeholder="num1" required>
         <select name="operator" id="operator">
             <option value="+">+</option>
