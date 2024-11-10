@@ -36,7 +36,7 @@
                     echo "benar";
                     break;
                 case 2:
-                case 3;
+                case 3:
                     echo "lebih satu dan lebih dua";
                     break;
 

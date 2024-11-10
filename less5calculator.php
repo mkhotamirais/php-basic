@@ -24,14 +24,17 @@
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // grab all inputs
-                $num1 = filter_input(INPUT_POST, "num1", FILTER_SANITIZE_NUMBER_FLOAT);
-                $num2 = filter_input(INPUT_POST, "num2", FILTER_SANITIZE_NUMBER_FLOAT);
+                // $num1 = filter_input(INPUT_POST, "num1", FILTER_SANITIZE_NUMBER_FLOAT);
+                // $num2 = filter_input(INPUT_POST, "num2", FILTER_SANITIZE_NUMBER_FLOAT);
+                $num1 = filter_input(INPUT_POST, "num1", FILTER_VALIDATE_FLOAT);
+                $num2 = filter_input(INPUT_POST, "num2", FILTER_VALIDATE_FLOAT);
+
                 $op = htmlspecialchars($_POST["operator"]);
                 $result = 0;
 
                 // error andler
                 $errors = false;
-                if (empty($num1) || empty($num2) || empty($op)) { {
+                if ($num1 === false || $num2 === false || empty($op)) { {
                         $errors = true;
                         echo "Please enter a number";
                     }
@@ -46,7 +49,7 @@
                         "+" => $num1 + $num2,
                         "-" => $num1 - $num2,
                         "*" => $num1 * $num2,
-                        "/" => $num1 / $num2,
+                        "/" => ($num2 != 0 ? $num1 / $num2 : "Cannot divide by zero"),
                         default => "Invalid operation"
                     };
                 }
