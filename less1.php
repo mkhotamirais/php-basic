@@ -9,6 +9,7 @@
 
 <body>
     <h1>Less1</h1>
+    <p>opening closing tag, variable, data types, standard output, variable superglobals</p>
     <ol>
         <li>
             Opening, closing tag and echo and don't forget (;) <br>
@@ -24,7 +25,7 @@
             hello <?php echo $name; ?>
         </li>
         <li>
-            DataTypes: (from now, view the source code to learn the PHP syntax)
+            DataTypes: (<b>from now, view the source code to learn the PHP syntax</b>)
             <?php
             // Scalar types (contains only one value)
             $string = "ahmad";
@@ -61,6 +62,20 @@
             <?php echo "hari jum'at"; ?> <br />
             <?php var_dump("hello"); ?> <br />
         </li>
+        <li>Variable Superglobal $_SERVER[] <br>
+            <?= $_SERVER["DOCUMENT_ROOT"]; ?> <br />
+            <?= $_SERVER["PHP_SELF"]; ?> <br />
+            <?= $_SERVER["SERVER_NAME"]; ?> <br />
+        </li>
+        <li>Variabel Superglobal $_GET[] <br />
+            add `?name=John` at the end of the url like this: <br />
+            http://localhost/php-basic/less2.php?name=John <br />
+            you can also join with & to add $_GET variable like this: <br />
+            http://localhost/php-basic/less2.php?name=John&age=10 <br />
+            <?= $_GET["name"] ?? "no name" ?> <br />
+            <?= $_GET["age"] ?? "no age" ?> <br />
+        </li>
+        <li>Other suberglobal variables $_POST[], $_REQUEST[], $_FILES[], $_COOKIES[], $_SESSION[], $_ENV[]</li>
     </ol>
 </body>
 

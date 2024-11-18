@@ -4,54 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Less7</title>
+    <title>PHP Less11</title>
 </head>
 
 <body>
-    <h1>Less7</h1>
-    <p>Mostly used Built-in function: <b>string</b> strlen(), strcmp(), explode(), htmlspecialchars(); <b>utility</b> var_dump(), isset(), empty(), die(), sleep()</p>
+    <h1>Less11</h1>
+    <h3>types</h3>
+    <ul>
+        <li>INT(11) -123243423 -23243434</li>
+        <li>BIGINT 2335444232334345</li>
+        <li>FLOAT -343542.233435</li>
+        <li>DOUBLE</li>
+        <li>VARCHAR(30) "ahmad abduls siti"</li>
+        <li>VARCHAR(255)</li>
+        <li>TEXT</li>
+        <li>DATE 2023-05-14</li>
+        <li>DATETIME 2023-05-14 17:10:00</li>
+    </ul>
+    <h3>Signed and Unsigned</h3>
+    <ul>
+        <li>If there is a range -10 to 10</li>
+        <li>SIGNED mean -10 to 10</li>
+        <li>UNSIGNED mean 0 to 10</li>
+    </ul>
 
-    <h3>Built in string function</h3>
-    <?php $hi = "Hello world!"; ?>
-    <?= $hi; ?><br />
-    <?= strlen($hi); ?><br />
-    <?= strpos($hi, "l"); ?><br />
-    <?= str_replace("world", "Dunia", $hi); ?>
-    <?= strtolower($hi); ?><br>
-    <?= substr($hi, 1, 5); ?><br />
-    <?= substr($hi, 1, -2); ?><br />
-    <?php print_r(explode(" ", $hi)); ?><br />
+    <h3>Query Create Table</h3>
+    <pre>
+        CREATE TABLE users (
+            id INT(11) NOT NULL AUTO_INCREMENT,
+            username VARCHAR(30) NOT NULL,
+            pwd VARCHAR(255) NOT NULL,
+            email VARCHAR(100) NOT NULL,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-    <h3>Built in math function</h3>
-    <?php $num = -5.5; ?>
-    <?= abs($num); ?><br />
-    <?= round($num); ?><br />
-    <?= pow(2, 3); ?><br />
-    <?= sqrt(16); ?><br />
+            PRIMARY KEY (id)
+        )
 
-    <h3>Built in array function</h3>
-    <?php $arr = ["satu", "dua", "tiga", "empat", "lima"]; ?>
-    <?= count($arr); ?>
+        CREATE TABLE comments (
+            id INT(11) NOT NULL AUTO_INCREMENT,
+            comment_text TEXT NOT NULL,
+            users_id INT(11),
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    <h3>Built in date and time function</h3>
-    <?php
-    // EPOCH time (asal mula waktu di dunia IT) = 1 Jan 1970 00:00:00
-    // mktime(jam, menit, detik, bulan, tanggal, tahun)
-    echo mktime(0, 0, 0, 0, 0, 0);
-    echo "<br />";
-    ?>
-    <?= date("l, d-m-y: h:i:sa"); ?><br />
-    <?= time(); ?><br />
-    <?php $date = "2024-01-01 12:00:00"; ?><br />
-    <?= $date; ?><br />
-    <?= strtotime($date); ?><br />
-    <?php
-    $birthday = mktime(0, 0, 0, 5, 22, 1998);
-    $birthday2 = strtotime("22 May 1998");
-    echo date('l', $birthday) . "<br/>";
+            PRIMARY KEY (id),
+            FOREIGN KEY (users_id) REFERENCES users (id) ON DELETE SET NULL
+        )
+    </pre>
+    <h3>Inserting data</h3>
+    <pre>
+        <!-- insert one -->
+        INSERT INTO users (username, pwd, email) VALUES ("ahmad", "ahmad", "ahmad@gmail.com");
+        <!-- insert many -->
+        INSERT INTO users (username, pwd, email) 
+        VALUES 
+            ("abdul", "abdul", "abdul@gmail.com"),
+            ("budi", "budi123", "budi@gmail.com"),
+            ("citra", "citra321", "citra@gmail.com"),
+            ("dina", "dina456", "dina@gmail.com");
+    </pre>
 
-    ?>
+    <h3>Updating data and delete</h3>
+    <pre>
+        UPDATE users SET username = "ayu", email = "ayu@gmail.com", pwd = "ayu" WHERE username = "budi";
+        DELETE FROM users WHERE id = 5;
+    </pre>
 
+    <h3>Select data</h3>
+    <pre>
+        SELECT * FROM users WHERE id >=3;
+        SELECT * FROM users INNER JOIN comments ON users.id = comments.users_id;
+        SELECT users.email, comments.comment_text FROM users INNER JOIN comments ON users.id = comments.users_id;
+        try with LEFT JOIN, RIGHT JOIN;
+        LEFT JOIN (semua data users ditampilkan, user yang tidak ada comment ditulis dengan null)
+        LEFT JOIN (semua data comment ditampilkan, comment yang tidak ada user ditulis dengan null)
+    </pre>
 </body>
 
 </html>

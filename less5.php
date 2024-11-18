@@ -9,54 +9,76 @@
 
 <body>
     <h1>Less5</h1>
-    <p>Conditions and control structures</p>
-    <ol>
-        <li>If else if <br />
-            <?php
-            $a = 1;
+    <p>Built-in function and user defined function</p>
+    <p>Mostly used Built-in function: <b>string</b> strlen(), strcmp(), explode(), htmlspecialchars(); <b>utility</b> var_dump(), isset(), empty(), die(), sleep()</p>
 
-            if ($a == 1) {
-                echo "benar";
-            } else if ($a == 2) {
-                echo "lebih satu";
-            } else {
-                echo "salah";
-            }
-            ?>
-        </li>
-        <li>Ternary <br />
-            <?php
-            echo $a == 1 ?  "benar" : ($a == 2 ? "lebih satu" :  "salah");
-            ?>
-        </li>
-        <li>Switch case <br />
-            <?php
-            switch ($a) {
-                case 1:
-                    echo "benar";
-                    break;
-                case 2:
-                case 3:
-                    echo "lebih satu dan lebih dua";
-                    break;
+    <h3>Built in string function</h3>
+    <?php $hi = "Hello world!"; ?>
+    <?= $hi; ?><br />
+    <?= strlen($hi); ?><br />
+    <?= strpos($hi, "l"); ?><br />
+    <?= str_replace("world", "Dunia", $hi); ?>
+    <?= strtolower($hi); ?><br>
+    <?= substr($hi, 1, 5); ?><br />
+    <?= substr($hi, 1, -2); ?><br />
+    <?php print_r(explode(" ", $hi)); ?><br />
 
-                default:
-                    echo "salah";
-                    break;
-            }
-            ?>
-        </li>
-        <li>Match <br />
-            <?php
-            $result = match ($a) {
-                1 => "benar",
-                2, 3 => "lebih satu dan lebih dua",
-                default => "salah"
-            };
-            echo $result;
-            ?>
-        </li>
-    </ol>
+    <h3>Built in math function</h3>
+    <?php $num = -5.5; ?>
+    <?= abs($num); ?><br />
+    <?= round($num); ?><br />
+    <?= pow(2, 3); ?><br />
+    <?= sqrt(16); ?><br />
+
+    <h3>Built in array function</h3>
+    <?php $arr = ["satu", "dua", "tiga", "empat", "lima"]; ?>
+    <?= count($arr); ?>
+
+    <h3>Built in date and time function</h3>
+    <?php
+    // EPOCH time (asal mula waktu di dunia IT) = 1 Jan 1970 00:00:00
+    // mktime(jam, menit, detik, bulan, tanggal, tahun)
+    echo mktime(0, 0, 0, 0, 0, 0);
+    echo "<br />";
+    ?>
+    <?= date("l, d-m-y: h:i:sa"); ?><br />
+    <?= time(); ?><br />
+    <?php $date = "2024-01-01 12:00:00"; ?><br />
+    <?= $date; ?><br />
+    <?= strtotime($date); ?><br />
+    <?php
+    $birthday = mktime(0, 0, 0, 5, 22, 1998);
+    $birthday2 = strtotime("22 May 1998");
+    echo date('l', $birthday) . "<br/>";
+
+    ?>
+
+
+    <h3>user-defined function</h3>
+
+    <?php
+    function sayHello()
+    {
+        return "hello world";
+    }
+    $hello = sayHello();
+
+    echo $hello;
+    ?>
+
+    <h3>user-defined with param</h3>
+
+    <?php
+    $name2 = "abdul";
+    function sayHello2(string $name, int $age)
+    {
+        global $name2;
+        return "hello $name and $name2, your age is $age";
+    }
+    $hello2 = sayHello2("ahmad", 20);
+    echo $hello2
+    ?>
+
 </body>
 
 </html>

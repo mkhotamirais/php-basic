@@ -9,7 +9,7 @@
 //     echo $_POST["name"];
 // } else echo "no name";
 
-// // option 3
-// if($_SERVER["REQUEST_METHOD"] == "POST") {
-//     echo $_POST["name"];
-// }
+// option 3
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    echo $_POST["name"];
+}
