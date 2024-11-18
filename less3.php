@@ -8,7 +8,28 @@
 </head>
 
 <body>
-    <h1>Less3</h1>
+
+    <?php
+    $str1 = "hello";
+    $str2 = "world!";
+    $num1 = 5;
+    $num2 = 6;
+    ?>
+
+    <h4>Operator string (.)</h4>
+    <?= $str1 . " " . $str2; ?>
+    <?php echo "$str1 $str2"; ?> <!-- string interpolation -->
+
+    <h4>Operator arithmetic (+ - * ** / %)</h4>
+    <?= $num2 + $num2; ?>
+
+
+    <h4>Operator assignment </h4>
+    <?= $num1++; ?>
+    <?= $num2 += 1; ?>
+
+
+
     <p>Operators, Conditions and control structures, Calculator</p>
     <ol>
         <li>String operator, concat . + <br />

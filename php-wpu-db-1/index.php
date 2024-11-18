@@ -1,6 +1,19 @@
 <?php
+
+require "config.php";
 // koneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "wpu_php_dasar") or die("Koneksi Gagal");
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+// // Membuat koneksi ke MySQL
+// $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+// // Cek koneksi
+// echo "halo semua";
+// if ($conn->connect_error) {
+//     die("Koneksi gagal: " . $conn->connect_error);
+// } else {
+//     echo "Koneksi berhasil!";
+// }
 
 // query isi tabel
 $result = mysqli_query($conn, "SELECT * FROM mahasiswa");

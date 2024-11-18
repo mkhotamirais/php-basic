@@ -8,75 +8,41 @@
 </head>
 
 <body>
+
     <h1>Less1</h1>
-    <p>opening closing tag, variable, data types, standard output, variable superglobals</p>
-    <ol>
-        <li>
-            Opening, closing tag and echo and don't forget (;) <br>
-            &lt;?php echo 'hello, world!'; ?&gt; or <br>
-            &lt;?= 'hello, world!'; ?&gt; <br />
-            <?php echo "hello world"; ?>
-        </li>
-        <li>All syntax between the PHP opening and closing tags is PHP code, so PHP can be mixed with HTML anywhere and can be inserted even if it's just a single variable.</li>
-        <li>
-            Variable: <br>
-            &lt;?php $name = "ahmad"; ?&gt; <br>
-            <?php $name = "ahmad"; ?>
-            hello <?php echo $name; ?>
-        </li>
-        <li>
-            DataTypes: (<b>from now, view the source code to learn the PHP syntax</b>)
-            <?php
-            // Scalar types (contains only one value)
-            $string = "ahmad";
-            $int = 10;
-            $float = 10.99;
-            $bool = true;
-
-            // Array types
-            $array1 = array("ahmad", "ahmad", "ahmad");
-            $array2 = ["ahmad", "ahmad", "ahmad"];
-
-            // Object types (we will discuss later)
-            // $person = new Person();
 
 
-            // If you don't assign a value to a variable, 
-            /*
-            $string; like this (but don't do this)
-            */
-            // it's default value will be as follows
-            $string = "";
-            $int = 0;
-            $float = 0;
-            $bool = false;
-            $array = [];
-            $object = null;
-            ?>
-        </li>
-        <li>
-            standard output: echo, print, print_r, var_dump <br />
-            <?php echo "echo"; ?> <br />
-            <?php print "print"; ?> <br />
-            <?php print_r("print_r"); ?> <br />
-            <?php echo "hari jum'at"; ?> <br />
-            <?php var_dump("hello"); ?> <br />
-        </li>
-        <li>Variable Superglobal $_SERVER[] <br>
-            <?= $_SERVER["DOCUMENT_ROOT"]; ?> <br />
-            <?= $_SERVER["PHP_SELF"]; ?> <br />
-            <?= $_SERVER["SERVER_NAME"]; ?> <br />
-        </li>
-        <li>Variabel Superglobal $_GET[] <br />
-            add `?name=John` at the end of the url like this: <br />
-            http://localhost/php-basic/less2.php?name=John <br />
-            you can also join with & to add $_GET variable like this: <br />
-            http://localhost/php-basic/less2.php?name=John&age=10 <br />
-            <?= $_GET["name"] ?? "no name" ?> <br />
-            <?= $_GET["age"] ?? "no age" ?> <br />
-        </li>
-        <li>Other suberglobal variables $_POST[], $_REQUEST[], $_FILES[], $_COOKIES[], $_SESSION[], $_ENV[]</li>
-    </ol>
+    <h4>PHP Syntax and standard output (php is between opening and closing php tag, and it can be mixed with html code)</h4>
+    <?php echo "Hello World!" ?>
+    <?php echo "hello world"; ?> <br />
+    <?php print "hello world"; ?> <br />
+    <?php print_r("hello world"); ?> <br />
+    <?php echo "hari jum'at"; ?> <br />
+    <?php var_dump("hello world"); ?> <br />
+    <?= "hello php!"; ?>
+
+
+    <h4>Data Types: scalar types (string, int, float, bool, object), array types ()</h4>
+    <?php
+    $string = "ahmad";
+    $arr = ['abdul', 'siti', 'ayu'];
+    $arr2 = array('satu', 'dua', 'tiga');
+    ?>
+
+    <h4>Superglobal $_SERVER[], $_GET[], $_POST[], $_REQUEST[], $_FILES[], $_COOKIES[], $_SESSION[], $_ENV[]</h4>
+    <p>
+        Nama server: <?= $_SERVER["SERVER_NAME"]; ?>, sekarang coba tambahkan di ujung url saat ini: <b>?name=ahmad&age=10</b>, nama saya <?= $_GET['name'] ?? "get name"; ?> umur saya <?= $_GET['age'] ?? "get age"; ?>
+    </p>
+
+    <h4>Form $_POST[]</h4>
+    <form action="less1PostHandler.php" method="post">
+        <input type="text" name="name" id="name" placeholder="name">
+        <input type="number" name="age" id="age" placeholder="age">
+        <button type="submit">submit</button>
+    </form>
+
+    <h4>Form </h4>
+
 </body>
 
 </html>

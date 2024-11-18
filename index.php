@@ -28,6 +28,10 @@
         <a href="less13/less13-index.php">less13 index</a>
         <a href="wpu-php-dasar/index.php">wpu php dasar</a>
         <a href="wpu-php-dasar/index2.php">wpu php dasar refactoring</a>
+
+        <br>
+        <br>
+        <a href="php-wpu-db-1">php wpu db 1</a>
     </nav>
 </body>
 
