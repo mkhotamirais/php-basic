@@ -1,49 +1,48 @@
 <?php
+session_start();
+require 'functions.php';
 
-require "config.php";
-// koneksi ke database
-$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-// // Membuat koneksi ke MySQL
-// $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-// // Cek koneksi
-// echo "halo semua";
-// if ($conn->connect_error) {
-//     die("Koneksi gagal: " . $conn->connect_error);
-// } else {
-//     echo "Koneksi berhasil!";
+// if (!isset($_SESSION["login"])) {
+//     header("Location: login.php");
+//     exit;
 // }
 
-// query isi tabel
-$result = mysqli_query($conn, "SELECT * FROM mahasiswa");
-// var_dump($result);
+if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
+    $id = $_COOKIE['id'];
+    $key = $_COOKIE['key'];
 
-// fetch data (4 cara)
+    $result = mysqli_query($conn, "SELECT username FROM user WHERE id = $id");
+    $row = mysqli_fetch_assoc($result);
 
-// cara 1 : mysqli_fetch_row()       mengembalikan numerik array
-// $mhs = mysqli_fetch_row($result);
-// var_dump($mhs[1]);
+    if ($key === hash('sha256', $row['username'])) {
+        $_SESSION['login'] = true;
+    }
+}
 
-// cara 2 : mysqli_fetch_assoc()     mengembalikan associative array
-// $mhs = mysqli_fetch_assoc($result);
-// var_dump($mhs["nama"]);
 
-// cara 3 : mysqli_fetch_array()     mengembalikan numerik sekaligus associative array
-// $mhs = mysqli_fetch_array($result);
-// var_dump($mhs["nama"], $mhs[1]);
+$keyword = $_POST['keyword'] ?? "";
 
-// cara 4 : mysqli_fetch_object()    mengembalikan object dengan tanda panah data->arr
-// $mhs = mysqli_fetch_object($result);
-// var_dump($mhs->nama);
+$dataPerPage = 2;
+$totalData = count(query("SELECT * FROM mahasiswa"));
+$totalPage = ceil($totalData / $dataPerPage);
+if (isset($_GET['page'])) {
+    if ($_GET['page'] < 1) {
+        $_GET['page'] = 1;
+    } else if ($_GET['page'] > $totalPage) {
+        $_GET['page'] = $totalPage;
+    }
+}
+$activePage = $_GET['page'] ?? 1;
 
-// untuk mendapat semua data
-// while ($row = mysqli_fetch_array($result)) {
-//     var_dump($row);
-// }
+$firstData = $dataPerPage * $activePage - $dataPerPage;
+
+$mahasiswa = query("SELECT * FROM mahasiswa LIMIT $firstData, $dataPerPage");
+
+if (isset($_POST['cari']) && isset($keyword)) {
+    $mahasiswa = query("SELECT * FROM mahasiswa WHERE nama LIKE '%$keyword%' or nrp LIKE '%$keyword%' or email LIKE '%$keyword%' or jurusan LIKE '%$keyword%'");
+}
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,41 +50,81 @@ $result = mysqli_query($conn, "SELECT * FROM mahasiswa");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wpu php dasar</title>
+    <title>wpu php dasar refactoring</title>
 </head>
 
 <body>
-    <h1>wpu php dasar</h1>
+    <h1>wpu php dasar refactoring</h1>
     <h3>daftar mahasiswa</h3>
-    <table border="1" cellpadding="10" cellspacing="0">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Nama</th>
-                <th>Gambar</th>
-                <th>NRP</th>
-                <th>Email</th>
-                <th>Jurusan</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $id = 1; ?>
-            <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+    <div>
+        <a href="register.php">register</a>
+        <br>
+        <a href="login.php">login</a>
+        <br>
+        <a href="logout.php">logout</a>
+        <br>
+    </div>
+    <br>
+    <div>
+        <a href="tambah.php">tambah data</a>
+    </div>
+    <br>
+    <form action="" method="post">
+        <input type="text" name="keyword" size="40" autofocus placeholder="masukan keyword pencarian.." autocomplete="off">
+        <button type="submit" name="cari">cari</button>
+    </form>
+    <input type="text" name="keylive" id="keylive" placeholder="live search.." autocomplete="off" />
+    <div>
+        <!-- prev -->
+        <?php if ($activePage > 1) : ?>
+            <a href="?page=<?= $activePage - 1; ?>">prev</a>
+        <?php endif; ?>
+        <!-- page numbers -->
+        <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
+            <a href="?page=<?= $i; ?>" style="text-decoration: none; <?= $activePage == $i ? 'font-weight: bold; border: 1px solid' : ''; ?>"><?= $i; ?></a>
+        <?php endfor; ?>
+        <!-- next -->
+        <?php if ($activePage < $totalPage) : ?>
+            <a href="?page=<?= $activePage + 1; ?>">next</a>
+        <?php endif; ?>
+    </div>
+
+    <div id="container">
+        <table border="1" cellpadding="10" cellspacing="0">
+            <thead>
                 <tr>
-                    <td><?= $id++ ?></td>
-                    <td><?= $row["nama"]; ?></td>
-                    <td><img src="<?= $row["gambar"]; ?>" width="50"></td>
-                    <td><?= $row["nrp"]; ?></td>
-                    <td><?= $row["email"]; ?></td>
-                    <td><?= $row["jurusan"]; ?></td>
-                    <td>
-                        <a href="">ubah</a> | <a href="">hapus</a>
-                    </td>
+                    <th>No.</th>
+                    <th>Nama</th>
+                    <th>Gambar</th>
+                    <th>NRP</th>
+                    <th>Email</th>
+                    <th>Jurusan</th>
+                    <th>Aksi</th>
                 </tr>
-            <?php endwhile; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php $id = 1; ?>
+                <?php foreach ($mahasiswa as $mhs) : ?>
+                    <tr>
+                        <td><?= $id++ ?></td>
+                        <td><?= $mhs["nama"]; ?></td>
+                        <td><img src="<?= "img/" . $mhs["gambar"]; ?>" width="50"></td>
+                        <td><?= $mhs["nrp"]; ?></td>
+                        <td><?= $mhs["email"]; ?></td>
+                        <td><?= $mhs["jurusan"]; ?></td>
+                        <td>
+                            <a href="ubah.php?id=<?= $mhs["id"]; ?>">ubah</a> |
+                            <a href="hapus.php?id=<?= $mhs["id"]; ?>" onclick="return confirm('yakin?')">hapus</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- script -->
+    <script src="script.js"></script>
 </body>
 
 </html>

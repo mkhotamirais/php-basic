@@ -1,6 +1,8 @@
 <?php
-$halo = "hello world";
-$conn = mysqli_connect("localhost", "root", "", "wpu_php_dasar") or die("Koneksi Gagal");
+
+require "config.php";
+
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die("Koneksi Gagal");
 
 function query($query)
 {

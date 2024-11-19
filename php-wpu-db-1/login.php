@@ -21,7 +21,7 @@ if (isset($_COOKIE['login'])) {
 }
 
 if (isset($_SESSION["login"])) {
-    header("Location: index2.php");
+    header("Location: index.php");
     exit;
 }
 
@@ -35,7 +35,7 @@ if (isset($_POST["login"])) {
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
         if (password_verify($password, $row["password"])) {
-            header("Location: index2.php");
+            header("Location: index.php");
             // set session
             $_SESSION["login"] = true;
             // cek remember me
