@@ -8,164 +8,164 @@
 </head>
 
 <body>
-
+    <h1>PHP Less3</h1>
+    <p>Scope, constants and loop</p>
+    <h3>Scope</h3>
     <?php
-    $str1 = "hello";
-    $str2 = "world!";
-    $num1 = 5;
-    $num2 = 6;
+    // 1. GLOBAL scope: $a is global scope
+    $a = "ayu";
+    echo $a;
+    echo "<br />";
+
+    function callAyu()
+    {
+        // you can access 
+        global $a;
+        // or you can do this (but rarely used)
+        $b = $GLOBALS["a"];
+
+        // 2. LOCAL scope: $b is local scope;
+        $c = "budi";
+        return "$a, $b, $c";
+    }
+    // echo $b; // error
+    echo callAyu();
+    echo "<br />";
+
+    // 3. STATIC scope
+    // perhatikan fungsi berkut;
+    function callNum()
+    {
+        $d = 1;
+        $d++;
+        return $d;
+    }
+    echo callNum();
+    echo callNum();
+    echo callNum();
+    echo "<br />";
+    function incNum()
+    {
+        static $e = 1;
+        $e++;
+        return $e;
+    }
+    echo incNum();
+    echo incNum();
+    echo incNum();
+
+    // 4. CLASS scope (we'll talk about this later)
+    class MyClass
+    {
+        public $f = "fani";
+        public function callFani()
+        {
+            return $this->f;
+        }
+    }
+
+    ?>
+    <h3>Constants</h3>
+    <?php
+    /*
+jika menulis variable seperti berikut:
+$name = "ahmad";
+*/
+    // berikut ini cara menulis constants
+    // constants tidak bisa dihapus
+    // secara konvensi constans ditulis dengan huruf kapital
+
+    define("NAME", "ahmad");
+    const AGE = 20;
+    echo NAME . "<br />";
+    echo AGE . "<br />";
+    $name = "abdul";
+
+    function callName()
+    {
+        return NAME;
+    }
+
+    echo callName();
+
     ?>
 
-    <h4>Operator string (.)</h4>
-    <?= $str1 . " " . $str2; ?>
-    <?php echo "$str1 $str2"; ?> <!-- string interpolation -->
 
-    <h4>Operator arithmetic (+ - * ** / %)</h4>
-    <?= $num2 + $num2; ?>
+    <h3>loop basic</h3>
+    <?php
 
+    for ($i = 0; $i < 3; $i++) {
+        echo "for $i <br/>";
+    }
 
-    <h4>Operator assignment </h4>
-    <?= $num1++; ?>
-    <?= $num2 += 1; ?>
+    $j = 0;
+    while ($j < 3) {
+        echo "while $j<br />";
+        $j++;
+    }
 
+    $k = 0;
+    do {
+        echo "do while $k<br />";
+        $k++;
+    } while ($k < 3);
 
+    $l = 5;
+    do {
+        echo "do while2 $l<br />";
+        $l++;
+    } while ($l < 3)
+    ?>
 
-    <p>Operators, Conditions and control structures, Calculator</p>
-    <ol>
-        <li>String operator, concat . + <br />
+    <h3>loop array</h3>
+    <?php
+    $fruits = ["apple", "banana", "cherry"];
+    foreach ($fruits as $fruit) {
+        echo "$fruit <br />";
+    }
+
+    $fruitsColor = ["apple" => "green", "banana" => "yellow", "cherry" => "red"];
+    foreach ($fruitsColor as $fruitName => $fruitColor) { // $fruitName => $fruitName) {
+        echo "$fruitName color is $fruitColor<br />";
+    }
+    ?>
+
+    <h3>others</h3>
+    <li><span>tabel1</span>
+        <table border="1" cellpadding="10" cellspacing="0">
             <?php
-            $a = "hello";
-            $b = "world";
-            $ab = $a . " " . $b;
-            $ab = "$a $b"; // strig interpolation
-            echo $ab;
-            ?> <br />
-        </li>
-        <li>Arithmetic operator + - * ** / % <br />
-            8 + 2 = <?= 8 + 2; ?> <br />
-            2 + 3 * 4 = <?= 2 + 3 * 4; ?> <br />
-            (2 + 3) * 4 = <?= (2 + 3) * 4; ?> <br />
-        </li>
-        <li>Assignment operator += -= *= /= %= .=, ++, -- <br />
-            <?php
-            $c = 3;
-            echo $c;
-            echo "<br />";
-            $c += 2;
-            echo $c;
-            echo $c++;
-            echo $c;
-            echo ++$c;
-            echo $c;
-            ?>
-        </li>
-        <li>Comparison operator <>, <=>, =, ==, Identity operator !== === <br />
-                    <?php
-                    $d = 5;
-                    $e = 6;
-                    if ($d < $e) {
-                        echo "d lebih kecil dari e";
-                    }
-                    ?>
-        </li>
-        <li>Logic operator: and, &&, or, ||, !</li>
-        <li>If else if <br />
-            <?php
-            $a = 1;
-
-            if ($a == 1) {
-                echo "benar";
-            } else if ($a == 2) {
-                echo "lebih satu";
-            } else {
-                echo "salah";
+            for ($m = 1; $m < 5; $m++) {
+                echo "<tr>";
+                for ($n = 1; $n < 5; $n++) {
+                    echo "<td>$m$n</td>";
+                }
+                echo "</tr>";
             }
             ?>
-        </li>
-        <li>Ternary <br />
-            <?php
-            echo $a == 1 ?  "benar" : ($a == 2 ? "lebih satu" :  "salah");
-            ?>
-        </li>
-        <li>Switch case <br />
-            <?php
-            switch ($a) {
-                case 1:
-                    echo "benar";
-                    break;
-                case 2:
-                case 3:
-                    echo "lebih satu dan lebih dua";
-                    break;
-
-                default:
-                    echo "salah";
-                    break;
-            }
-            ?>
-        </li>
-        <li>Match <br />
-            <?php
-            $result = match ($a) {
-                1 => "benar",
-                2, 3 => "lebih satu dan lebih dua",
-                default => "salah"
-            };
-            echo $result;
-            ?>
-        </li>
-        <li>
-            <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-                <input type="number" placeholder="input first number" name="num1" placeholder="num1" required>
-                <select name="operator" id="operator">
-                    <option value="+">+</option>
-                    <option value="-">-</option>
-                    <option value="*">*</option>
-                    <option value="/">/</option>
-                </select>
-                <input type="number" placeholder="input second number" name="num2" placeholder="num2" required>
-                <button type="submit">=</button>
-
-                <span>
-                    <?php
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                        // grab all inputs
-                        // $num1 = filter_input(INPUT_POST, "num1", FILTER_SANITIZE_NUMBER_FLOAT);
-                        // $num2 = filter_input(INPUT_POST, "num2", FILTER_SANITIZE_NUMBER_FLOAT);
-                        $num1 = filter_input(INPUT_POST, "num1", FILTER_VALIDATE_FLOAT);
-                        $num2 = filter_input(INPUT_POST, "num2", FILTER_VALIDATE_FLOAT);
-
-                        $op = htmlspecialchars($_POST["operator"]);
-                        $result = 0;
-
-                        // error andler
-                        $errors = false;
-                        if ($num1 === false || $num2 === false || empty($op)) { {
-                                $errors = true;
-                                echo "Please enter a number";
-                            }
-                        }
-                        if (!is_numeric($num1) || !is_numeric($num2)) {
-                            $errors = true;
-                            echo "Please enter a number";
-                        }
-                        // calculate the numbers if no errors
-                        if (!$errors) {
-                            $result = match ($op) {
-                                "+" => $num1 + $num2,
-                                "-" => $num1 - $num2,
-                                "*" => $num1 * $num2,
-                                "/" => ($num2 != 0 ? $num1 / $num2 : "Cannot divide by zero"),
-                                default => "Invalid operation"
-                            };
-                        }
-                        echo $result;
-                    }
-                    ?>
-                </span>
-            </form>
-        </li>
-    </ol>
+        </table>
+    </li>
+    <li><span>tabel2</span>
+        <table border="1" cellpadding="10" cellspacing="0">
+            <?php for ($o = 1; $o < 5; $o++) { ?>
+                <tr>
+                    <?php for ($p = 1; $p < 5; $p++) { ?>
+                        <td><?= $o, $p; ?></td>
+                    <?php } ?>
+                </tr>
+            <?php } ?>
+        </table>
+    </li>
+    <li><span>table3</span>
+        <table border="1" cellpadding="10" cellspacing="0">
+            <?php for ($q = 1; $q < 5; $q++) : ?>
+                <tr>
+                    <?php for ($r = 1; $r < 5; $r++) { ?>
+                        <td><?= $q, $r; ?></td>
+                    <?php } ?>
+                </tr>
+            <?php endfor; ?>
+        </table>
+    </li>
 
 </body>
 

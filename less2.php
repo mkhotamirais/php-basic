@@ -4,15 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Less5</title>
+    <title>PHP Less2</title>
 </head>
 
 <body>
-    <h1>Less5</h1>
+    <h1>PHP Less2</h1>
+
+    <!-- arrays -->
+    <h2>Arrays</h2>
+    <h4>Array type 1 (indexed array)</h4>
+    <?php $nomor = ["empat", "lima", "enam"] ?>
+
+    <?php var_dump($nomor) ?><br />
+    <?php print_r($nomor) ?><br />
+    <?= join(", ", $nomor); ?><br />
+    <?= $nomor[1]; ?><br />
+
+    <?php $nomor[] = "tujuh"; ?>
+    <?php array_push($nomor, "delapan"); ?>
+    <?php unset($nomor[0]); ?>
+    <?= $nomor[0] ?? "nomor 0 unset"; ?><br />
+    <?php print_r($nomor) ?><br />
+
+    <?php array_splice($nomor, 0, 1); ?>
+    <?php print_r($nomor) ?><br />
+
+    <?php array_splice($nomor, 0, 1, "enam updated"); ?>
+    <?php print_r($nomor) ?><br />
+
+    <h4>Array type 2 (associative array)</h4>
+    <?php $dataku = ["nama" => "ahmad", "umur" => 20, "asal" => "indonesia"]; ?>
+    <?= print_r($dataku); ?><br />
+    <?= $dataku["nama"]; ?>
+    <?php $dataku["nama"] = "abdul"; ?>
+    <?= $dataku["nama"]; ?>
+
+    <h4>Nested array</h4>
+    <?php
+    $nested = ["parent1", "parent2", ["child1", "child2"]];
+    $nested2 = [
+        "satu" => "ahmad",
+        "dua" => "abdul",
+        "tiga" => [
+            "empat" => "ali",
+            "lima" => "siti"
+        ]
+    ];
+    echo $nested[2][1];
+    echo "<br />";
+    echo $nested2["tiga"]["empat"];
+    ?>
+
+    <h2>Functions</h2>
     <p>Built-in function and user defined function</p>
     <p>Mostly used Built-in function: <b>string</b> strlen(), strcmp(), explode(), htmlspecialchars(); <b>utility</b> var_dump(), isset(), empty(), die(), sleep()</p>
 
-    <h3>Built in string function</h3>
+    <h4>Built in string function</h4>
     <?php $hi = "Hello world!"; ?>
     <?= $hi; ?><br />
     <?= strlen($hi); ?><br />
@@ -23,18 +70,18 @@
     <?= substr($hi, 1, -2); ?><br />
     <?php print_r(explode(" ", $hi)); ?><br />
 
-    <h3>Built in math function</h3>
+    <h4>Built in math function</h4>
     <?php $num = -5.5; ?>
     <?= abs($num); ?><br />
     <?= round($num); ?><br />
     <?= pow(2, 3); ?><br />
     <?= sqrt(16); ?><br />
 
-    <h3>Built in array function</h3>
+    <h4>Built in array function</h4>
     <?php $arr = ["satu", "dua", "tiga", "empat", "lima"]; ?>
     <?= count($arr); ?>
 
-    <h3>Built in date and time function</h3>
+    <h4>Built in date and time function</h4>
     <?php
     // EPOCH time (asal mula waktu di dunia IT) = 1 Jan 1970 00:00:00
     // mktime(jam, menit, detik, bulan, tanggal, tahun)
@@ -54,7 +101,7 @@
     ?>
 
 
-    <h3>user-defined function</h3>
+    <h4>user-defined function</h4>
 
     <?php
     function sayHello()
@@ -66,7 +113,7 @@
     echo $hello;
     ?>
 
-    <h3>user-defined with param</h3>
+    <h4>user-defined with param</h4>
 
     <?php
     $name2 = "abdul";
@@ -78,7 +125,6 @@
     $hello2 = sayHello2("ahmad", 20);
     echo $hello2
     ?>
-
 </body>
 
 </html>
