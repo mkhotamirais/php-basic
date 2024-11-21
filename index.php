@@ -20,6 +20,7 @@
         <a href="basic">basic</a>
         <a href="oop">oop</a>
         <a href="db">db</a>
+        <a href="mvc">mvc</a>
     </nav>
     <h1>PHP Introduction</h1>
     <h2>Getting started with php</h2>

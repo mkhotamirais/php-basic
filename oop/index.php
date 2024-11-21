@@ -16,7 +16,7 @@
 
 <body>
 
-    <h1>php oop</h1>
+    <h1>PHP OOP</h1>
     <nav>
         <a href="less1.php">less1</a>
         <a href="less2.php">less2</a>
