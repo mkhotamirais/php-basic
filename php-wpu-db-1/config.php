@@ -3,7 +3,7 @@
 // const DB_HOST = "localhost";
 // const DB_USER = "root";
 // const DB_PASS = "";
-// const DB_NAME = "wpu_php_dasar";
+// const DB_NAME = "db_wpu_mysqli";
 
 const DB_HOST = "localhost";
 const DB_USER = "tami8172_admin";

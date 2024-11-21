@@ -11,6 +11,7 @@
     <h1>Krossing PDO</h1>
     <ul>
         <li>DB_NAME: db_krossing_pdo</li>
+        <li>hanya bisa berjalan di local</li>
     </ul>
 
     <a href="signup.php">signup</a>

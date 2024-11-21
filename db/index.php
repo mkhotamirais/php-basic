@@ -27,6 +27,7 @@
     <h2>Projects</h2>
     <nav>
         <a href="krossing-pdo">krossing-pdo</a>
+        <a href="wpu-mysqli">wpu-mysqli</a>
     </nav>
 
     <h2>Data types</h2>
