@@ -3,7 +3,6 @@
 include "is-login.php";
 include "is-operator-mahasiswa.php";
 
-
 $title = "Detail Mahasiswa";
 include "layout/header.php";
 
