@@ -19,7 +19,7 @@
     <nav>
         <a href="basic">basic</a>
         <a href="oop">oop</a>
-        <a href="db">db</a>
+        <a href="db">db (pdo/mysqli)</a>
         <a href="mvc">mvc</a>
     </nav>
     <h1>PHP Introduction</h1>

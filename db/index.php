@@ -28,6 +28,7 @@
     <nav>
         <a href="krossing-pdo">krossing-pdo</a>
         <a href="wpu-mysqli">wpu-mysqli</a>
+        <a href="muba-mysqli">muba-mysqli</a>
     </nav>
 
     <h2>Data types</h2>
