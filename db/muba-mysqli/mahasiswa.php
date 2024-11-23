@@ -12,6 +12,7 @@ $data_mahasiswa = select("SELECT * FROM mahasiswa ORDER BY id_mahasiswa DESC");
 <h1><?= $title; ?></h1>
 <hr />
 <a href="mahasiswa-tambah.php" class="btn btn-primary mb-1">Tambah</a>
+<a href="download-excel-mahasiswa.php" class="btn btn-success mb-1">Download Excel</a>
 <table class="table table-striped mt-3 display" id="example">
     <thead>
         <tr>
